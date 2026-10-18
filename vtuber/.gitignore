@@ -1,0 +1,8 @@
+.vtwall.sqlite3
+.vtwall.sqlite3-*
+.danbooru-*.part
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.disabled

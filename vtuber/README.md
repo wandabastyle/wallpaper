@@ -1,37 +1,36 @@
 # VTuber Wallpapers
 
-This directory is populated by `download-vtuber-wallpapers.sh`. Its balanced
-creator roster is in `creators.txt`.
+Run this from the folder:
 
-The script queries Safebooru first and falls back to Danbooru for the configured
-female creator tags. It excludes common male-character tags, requires 16:9
-images at a minimum resolution of 1920x1080, and downloads full image URLs from
-the public APIs. It accepts native 16:9 images only and validates the image
-format and dimensions before keeping each file.
-Each round shuffles the roster and downloads at most one image per creator,
-which avoids a single popular agency dominating the collection. A run is capped
-at the roster size so it never cycles through creators to satisfy a larger count.
-`downloaded-creators.txt` keeps that one-per-creator rule across reruns and
-across both image sources.
-
-`download-wiki-gallery-wallpapers.sh` checks native 16:9 originals from the
-Virtual YouTuber Wiki galleries listed in `wiki-profiles.tsv`.
-
-Run from this directory:
-
-```bash
-./download-vtuber-wallpapers.sh
+```fish
+./download-vtuber-wallpapers.py
 ```
 
-Pass a count to download more images, for example:
+It downloads up to 20 high-resolution, near-16:9 wallpapers from Danbooru into this directory. General, sensitive, and questionable posts are allowed; explicit posts are excluded. To choose a different limit:
 
-```bash
-./download-vtuber-wallpapers.sh 40
+```fish
+./download-vtuber-wallpapers.py 50
 ```
 
-Rerunning it does not replace files already present. Image filenames include the
-source and post ID. Visit `https://safebooru.org/index.php?page=post&s=view&id=<id>`
-or `https://danbooru.donmai.us/posts/<id>` for attribution where available.
+The creator searches are the non-comment lines in `creators.txt`. Edit that file to add or remove creators.
 
-Add or remove lines in `creators.txt` to tune the collection. Blank
-lines and lines beginning with `#` are ignored.
+`creators.txt` is also your rotation control. Comment out or remove a creator, then run the script: its wallpaper is renamed from (for example) `filian--danbooru-123.jpg` to `filian--danbooru-123.jpg.disabled`, which wallpaper tools will not treat as an image. Re-enable the creator and run the script again to download a fresh wallpaper; the disabled file remains as an archive. Each active creator has at most one image-extension wallpaper.
+
+For active creators, each run checks for a newer qualifying Danbooru post. A newer image is downloaded and validated before the previous wallpaper is renamed to `.disabled`.
+
+Files are named `<creator-tag>--danbooru-<post-id>.<extension>`, for example `sansin_jin--danbooru-12406344.png`, so they sort by creator. Existing files are never replaced. `.vtwall.sqlite3` records completed and failed downloads so rerunning is safe. The script uses Python's standard library only and needs Python 3.12 or newer.
+
+To rename older `danbooru-<post-id>.<extension>` files once, using their Danbooru tags and `creators.txt`:
+
+```fish
+./download-vtuber-wallpapers.py --rename-existing
+```
+
+Optional Danbooru login, if you have one:
+
+```fish
+set -Ux DANBOORU_LOGIN your_login
+set -Ux DANBOORU_API_KEY your_api_key
+```
+
+Downloads are for a personal collection; respect the artists' rights and Danbooru's API limits.
