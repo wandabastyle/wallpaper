@@ -1,0 +1,71 @@
+# One Danbooru creator tag or search term per line. Each round downloads at most one image
+# per query, with the order shuffled to prevent popular agencies dominating.
+
+# Independent creators
+shylily
+filian
+bao
+saruei
+dokibird
+sinder
+neuro-sama
+snuffy
+chibidoki
+codemiko
+
+# Smaller agencies and collectives
+pippa_pipkin
+tenma_maemi
+rin_penrose
+yumi_the_witch
+
+# VShojo
+ironmouse
+zentreya
+projekt_melody
+
+# Hololive production
+gawr_gura
+mori_calliope
+hoshimachi_suisei
+houshou_marine
+
+# Foundational virtual creators
+kizuna_ai
+kaguya_luna
+
+# Verified Twitch follows: female, independent, and desktop-art eligible
+aquwa
+kirana_yonome
+mako_fukasame
+moofie_(vtuber)
+nyana_banyana
+vampykinz
+
+# Verified Twitch follows: female, non-Nijisanji profiles
+alpha_betta
+anny_(vtuber)
+astrea_colornatura
+basil_chan
+cerbervt
+comfy
+ebiko_amai
+jummy
+lemonleaf
+lidia_nekozawa
+marshie
+mipyun
+momatcookiebox
+nihmune
+omo-chan
+pipi_slayer
+shachi_(vtuber)
+shimo_hisae
+skari_fae
+smugalana
+toma_(vtuber)
+vivi_chan_the_dragon
+cypress_(vtuber)
+weepymiyu
+yomi_quinnley
+zoe_victoria
